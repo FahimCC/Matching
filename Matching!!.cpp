@@ -7,7 +7,7 @@
 
 using namespace std;
 
-int cou = 1;
+int wrongSearchCounter = 1;
 int flagg = 0, fflag = 0;
 class student
 {
@@ -64,7 +64,7 @@ public:
         int emaill = email_search(eemail);
         if(emaill == 5)
         {
-            cou++;
+            wrongSearchCounter++;
             cout<<endl<<"\t\t\tThis email id already in here please try any thing else."<<endl<<endl;
             goto nine;
         }
@@ -80,14 +80,14 @@ public:
             {
                 if(email[k] == ' ')
                 {
-                    cou++;
+                    wrongSearchCounter++;
                     cout<<endl<<"\t\t\tThis is not an email address.Please try again."<<endl<<endl;
                     goto nine;
                 }
             }
 
-            cou++;
-            if(cou == 4)
+            wrongSearchCounter++;
+            if(wrongSearchCounter == 4)
             {
                 cout<<endl<<"\t\t\tBujhchi tr Email nai .. age email khul tarpor aich akhon vag."<<endl<<endl;
                 cout<<endl<<"\t\t\tPress any key to Exit."<<endl;
