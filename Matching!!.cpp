@@ -53,23 +53,33 @@ public:
     char* set_Capital_info(char *);
     void view_All_info(char *);
 
-    int get_info()
+    int get_info(int a = 0)
     {
+        int emaill = 0;
+        char email1[30],email2[30];
+
         nine:
+        strcpy(email2,email);
         cout<<"\t\t\tEnter Your Email: ";
         cin.getline(email,29);
 
-        char eemail[30];
-        strcpy(eemail,email);
-        int emaill = email_search(eemail);
+        if(a == 1 && !strcmp(email2,email))
+        {
+            goto lebel;
+        }
+
+        strcpy(email1,email);
+
+        emaill = email_search(email1);
         if(emaill == 5)
         {
             wrongSearchCounter++;
             cout<<endl<<"\t\t\tThis email id already in here please try any thing else."<<endl<<endl;
             goto nine;
         }
+        strcpy(email,email1);
 
-        strcpy(email,eemail);
+        lebel:
         ///pattern matching.
         int index = matching(email,"@gmail.com");
 
@@ -90,9 +100,9 @@ public:
             if(wrongSearchCounter == 4)
             {
                 cout<<endl<<"\t\t\tBujhchi tr Email nai .. age email khul tarpor aich akhon vag."<<endl<<endl;
-                cout<<endl<<"\t\t\tPress any key to Exit."<<endl;
+                cout<<endl<<"\t\t\tPress any key to back."<<endl;
                 getch();
-                return 0;
+                goto nine;
             }
             cout<<endl<<"\t\t\tThis is not an email address.Please try again."<<endl<<endl;
             goto nine;
@@ -360,7 +370,7 @@ void student::update_info(char* t, char* s)
             if(!strcmp(email,t) && !strcmp(password,s))
             {
                 flag = 2;
-                get_info();
+                get_info(1);
                 file.seekp(file.tellp()-sizeof(*this));
                 file.write((char*)this,sizeof(*this));
                 break;
@@ -387,9 +397,10 @@ void student::delete_info(char* t, char* s)
     {
         fout.open("Temporary.txt",ios::out);
         fin.read((char*)this,sizeof(*this));
+
         while(!fin.eof())
         {
-            if(strcmp(email,t) && strcmp(password,s))
+            if(strcmp(email,t) || strcmp(password,s))
             {
                 fout.write((char*)this,sizeof(*this));
             }
@@ -402,6 +413,7 @@ void student::delete_info(char* t, char* s)
         fout.close();
 
         remove("Matching.txt");
+
         rename("Temporary.txt","Matching.txt");
         if(flag == 1)
             cout<<endl<<"\t\t\tInformation not found."<<endl;
@@ -423,7 +435,6 @@ int student::email_search_info(char *t, char *s)
         {
             if(!strcmp(email,t) && !strcmp(password,s))
             {
-                cout<<flag<<endl;
                 flag = 1;
                 break;
             }
@@ -563,8 +574,8 @@ int main()
 
     ///Declaration.
     student B;
-//    ofstream fout("Matching.txt");
-//    fout.close();
+    ofstream fout("Matching.txt",ios::app);
+    fout.close();
 
     int emaill,e,mainM,n;
     char email[30], password[30], genderr[10], religion[10];
@@ -577,8 +588,8 @@ int main()
             {
                 B.get_info();
                 B.store_info();
-
             }
+
             ///sign up.
             else if(n == 2)
             {
@@ -663,9 +674,9 @@ int main()
                 cout<<endl<<endl<<endl<<"\t\t\t\t\tThank you for visiting this application."<<endl<<endl;
 
                 if(flagg == 1)
-                    cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\n Ai application faltu mone korar kono karon nai. bohut kosto koira banaichi. Ar valo kotha ai j valo manush hou valo bou emnei paba.";
+                    cout<<"\n\n\n\n\n\n\n\n Ai application faltu mone korar kono karon nai. bohut kosto koira banaichi. Ar valo kotha ai j valo manush hou valo bou emnei paba.";
                 else if(flagg == 3 && fflag == 3)
-                    cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\n Atto khushi howar kicchu nai ai matching matching ai application porjontoi. So, valo manush hou valo bou emnei paba.\n\n\n";
+                    cout<<"\n\n\n\n\n\n\n\n Atto khushi howar kicchu nai ai matching matching ai application porjontoi. So, valo manush hou valo bou emnei paba.\n\n\n";
                 cout<<endl<<endl;
 
                 goto exit;
