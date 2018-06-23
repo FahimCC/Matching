@@ -12,25 +12,25 @@ int flagg = 0, fflag = 0;
 class student
 {
 private:
-    char email[30];
-    char password[30];
-    char name[25];
+    char email[100];
+    char password[100];
+    char name[100];
     int age;
-    char dateOfBirth[30];
-    char bloodgroup[4];
-    char mobileNo[15];
-    char address[30];
-    char fatherName[30];
-    char motherName[30];
-    char occupation[10];
-    char religion[10];
-    char married[15];
-    char hscInstitute[30];
-    char sscInstitute[30];
+    char dateOfBirth[100];
+    char bloodgroup[100];
+    char mobileNo[100];
+    char address[100];
+    char fatherName[100];
+    char motherName[100];
+    char occupation[100];
+    char religion[100];
+    char married[100];
+    char hscInstitute[100];
+    char sscInstitute[100];
     double hscResult;
     double sscResult;
     int main;
-    char gender[10];
+    char gender[100];
 
 public:
     ///constructor.
@@ -56,12 +56,12 @@ public:
     int get_info(int a = 0)
     {
         int emaill = 0;
-        char email1[30],email2[30];
+        char email1[100],email2[100];
 
         nine:
         strcpy(email2,email);
         cout<<"\t\t\tEnter Your Email: ";
-        cin.getline(email,29);
+        cin.getline(email,99);
 
         if(a == 1 && !strcmp(email2,email))
         {
@@ -110,11 +110,11 @@ public:
 
         eight:
         cout<<"\t\t\tEnter Your Password: ";
-        cin.getline(password,29);
+        cin.getline(password,99);
 
-        char passwor[30];
+        char passwor[100];
         cout<<"\t\t\tConfirm Password: ";
-        cin.getline(passwor,29);
+        cin.getline(passwor,99);
 
         if(strcmp(passwor,password))
         {
@@ -123,7 +123,7 @@ public:
         }
 
         cout<<endl<<"\t\t\tEnter Your Name(Capital letter): ";
-        cin.getline(name,24);
+        cin.getline(name,99);
 
         ///funtion.
         strcpy(name,set_Capital_info(name));
@@ -152,19 +152,19 @@ public:
         }
 
         cout<<"\t\t\tEnter Your Birth Date: ";
-        cin.getline(dateOfBirth,29);
+        cin.getline(dateOfBirth,99);
 
         cout<<"\t\t\tEnter Your Blood Group: ";
-        cin.getline(bloodgroup,3);
+        cin.getline(bloodgroup,99);
 
         cout<<"\t\t\tEnter your gender: ";
-        cin.getline(gender,9);
+        cin.getline(gender,99);
 
         strcpy(gender,set_Capital_info(gender));
 
         forteen:
         cout<<"\t\t\tEnter Your Mobile No.(+880): ";
-        cin.getline(mobileNo,14);
+        cin.getline(mobileNo,99);
 
         int l = strlen(mobileNo);
 
@@ -175,27 +175,27 @@ public:
         }
 
         cout<<"\t\t\tEnter Your Address: ";
-        cin.getline(address,29);
+        cin.getline(address,99);
 
         cout<<"\t\t\tEnter Your Father Name: ";
-        cin.getline(fatherName,29);
+        cin.getline(fatherName,99);
 
         cout<<"\t\t\tEnter Your Mother Name: ";
-        cin.getline(motherName,29);
+        cin.getline(motherName,99);
 
         cout<<"\t\t\tEnter Your Occupation: ";
-        cin.getline(occupation,9);
+        cin.getline(occupation,99);
 
         cout<<"\t\t\tEnter Your Religion: ";
-        cin.getline(religion,9);
+        cin.getline(religion,99);
 
         strcpy(religion,set_Capital_info(religion));
 
         cout<<"\t\t\tEnter Your Maritual Status: ";
-        cin.getline(married,14);
+        cin.getline(married,99);
 
         cout<<"\t\t\tEnter Your Alim/HSC Institute: ";
-        cin.getline(hscInstitute,29);
+        cin.getline(hscInstitute,99);
 
         twenty_five:
         cout<<"\t\t\tEnter Your Alim/HSC Result: ";
