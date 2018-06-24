@@ -8,7 +8,7 @@
 using namespace std;
 
 int wrongSearchCounter = 1;
-int flagg = 0, fflag = 0;
+int flagg = 1,fflag = 1;
 class student
 {
 private:
@@ -163,7 +163,7 @@ public:
         strcpy(gender,set_Capital_info(gender));
 
         forteen:
-        cout<<"\t\t\tEnter Your Mobile No.(+880): ";
+        cout<<"\t\t\tEnter Your Mobile No.(+88): ";
         cin.getline(mobileNo,99);
 
         int l = strlen(mobileNo);
@@ -209,7 +209,7 @@ public:
         }
 
         cout<<"\t\t\tEnter Your Dakhil/SSC Institute: ";
-        cin.getline(sscInstitute,29);
+        cin.getline(sscInstitute,99);
 
         twenty_six:
         cout<<"\t\t\tEnter Your Dakhil/SSC Result: ";
@@ -348,8 +348,6 @@ void student::main_search_info(int t, char *g, char *r)
         fin.close();
         if(flag == 1)
             cout<<endl<<"\t\t\tMatch not found."<<endl;
-
-        flagg = flag;
     }
 }
 
@@ -424,13 +422,15 @@ void student::delete_info(char* t, char* s)
 int student::email_search_info(char *t, char *s)
 {
     int flag = 0;
-    ifstream fin;
+    fstream fin;
     fin.open("Matching.txt",ios::in);
     if(!fin)
         cout<<endl<<"\t\t\tData Base not open."<<endl;
     else
     {
+        //cout<<endl<<fin.tellp()<<endl;
         fin.read((char*)this,sizeof(*this));
+        //cout<<endl<<fin.tellp()<<endl;
         while(!fin.eof())
         {
             if(!strcmp(email,t) && !strcmp(password,s))
@@ -482,6 +482,7 @@ void student::search_info(char *t, char *s)
     else
     {
         fin.read((char*)this,sizeof(*this));
+
         while(!fin.eof())
         {
             if((!strcmp(email,t)) && (!strcmp(password,s)))
@@ -492,9 +493,9 @@ void student::search_info(char *t, char *s)
             }
             fin.read((char*)this,sizeof(*this));
         }
-        fin.close();
         if(flag == 1)
             cout<<endl<<"\t\tInformation not found."<<endl;
+        fin.close();
     }
 }
 
@@ -673,10 +674,11 @@ int main()
                 getch();
                 cout<<endl<<endl<<endl<<"\t\t\t\t\tThank you for visiting this application."<<endl<<endl;
 
-                if(flagg == 1)
-                    cout<<"\n\n\n\n\n\n\n\n Ai application faltu mone korar kono karon nai. bohut kosto koira banaichi. Ar valo kotha ai j valo manush hou valo bou emnei paba.";
+                //cout<<flagg<<endl;
+                if(flagg == 1 && fflag == 3)
+cout<<"\n\n\n\n\n\n\n\n Ai application faltu mone korar kono karon nai. bohut kosto koira banaichi. Ar valo kotha ai j valo manush hou valo bou or jamai emnei paba.";
                 else if(flagg == 3 && fflag == 3)
-                    cout<<"\n\n\n\n\n\n\n\n Atto khushi howar kicchu nai ai matching matching ai application porjontoi. So, valo manush hou valo bou emnei paba.\n\n\n";
+cout<<"\n\n\n\n\n\n\n\n Atto khushi howar kicchu nai ai matching matching ai application porjontoi. So, valo manush hou valo bou or ajaira jamai emnei paba.\n\n\n";
                 cout<<endl<<endl;
 
                 goto exit;
